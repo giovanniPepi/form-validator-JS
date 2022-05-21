@@ -1,4 +1,4 @@
-import style from './style.css';
+import './style.css';
 
 // DOM queries
 const form = document.getElementsByTagName('form')[0];

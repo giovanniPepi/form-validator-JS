@@ -8,10 +8,40 @@
   </head>
   <body>
     <form novalidate>
-      <label for="mail">Email: </label>
-      <input type="email" name="mail" id="mail" required minlength="8" />
-      <span class="error" aria-live="polite"></span>
-      <button type="submit">Submit</button>
+      <fieldset>
+        <legend>Personal info</legend>
+        <label for="mail">Email: </label>
+        <input type="email" name="mail" id="mail" required minlength="8" />
+        <span class="error" aria-live="polite"></span>
+
+        <label for="country">Country </label>
+        <input
+          type="text"
+          name="country"
+          id="country"
+          required
+          minlength="3"
+          pattern="[A-Za-z]+"
+        />
+        <span class="error" aria-live="polite"></span>
+
+        <label for="zip">ZIP code </label>
+        <input type="text" name="zip" id="zip"" required minlength="9"
+        pattern="[0-9]*"/>
+        <span class="error" aria-live="polite"></span>
+
+        <label for="pwd">Password</label>
+        <input type="password" name="pwd" id="pwd"" required minlength="8"
+        pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"/>
+        <span class="error" aria-live="polite"></span>
+
+        <label for="repeatpwd">Repeat password</label>
+        <input type="password" name="repeatpwd" id="repeatpwd"" required
+        minlength="8" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"/>
+        <span class="error" aria-live="polite"></span>
+      </fieldset>
+
+      <button type="submit" class="submit">Submit</button>
     </form>
   </body>
 </html>

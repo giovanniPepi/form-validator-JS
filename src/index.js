@@ -70,7 +70,7 @@ const showPwdError = () => {
 const showRepeatPwdError = () => {
   if (repeatPwd.validity.valueMissing) {
     repeatPwdError.textContent = 'Please confirm your password';
-  } else if (repeatPwd !== pwd) {
+  } else if (!repeatPwd.validity.valid) {
     repeatPwdError.textContent = 'Passwords do not match!';
   }
   repeatPwdError.className = 'error active';
@@ -109,6 +109,19 @@ zip.addEventListener('input', () => {
   }
 });
 
+// pwd validation function
+const validatePassword = () => {
+  const pwd1Value = document.getElementById('pwd').value;
+  const pwd2Value = document.getElementById('repeatpwd').value;
+  const pwd2 = document.getElementById('repeatpwd');
+
+  if (pwd1Value !== pwd2Value) {
+    pwd2.setCustomValidity("Passwords don't match");
+  } else {
+    pwd2.setCustomValidity('');
+  }
+};
+
 // password
 pwd.addEventListener('input', () => {
   if (pwd.validity.valid) {
@@ -121,11 +134,12 @@ pwd.addEventListener('input', () => {
 
 // repeat password
 repeatPwd.addEventListener('input', () => {
-  if (repeatPwd !== pwd) {
-    showRepeatPwdError();
-  } else {
+  validatePassword();
+  if (repeatPwd.validity.valid) {
     repeatPwdError.textContent = '';
     repeatPwdError.className = 'error';
+  } else {
+    showRepeatPwdError();
   }
 });
 
